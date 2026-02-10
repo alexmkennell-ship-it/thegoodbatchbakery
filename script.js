@@ -202,3 +202,58 @@ document.getElementById('year').textContent = new Date().getFullYear();
 renderMenu();
 renderCart();
 renderReviews();
+(function () {
+  const checkoutForm = document.getElementById("checkout-form");
+  if (!checkoutForm) return;
+
+  const statusEl = document.getElementById("order-status");
+  const itemsField = document.getElementById("order-items-field");
+  const totalField = document.getElementById("order-total-field");
+  const cartItemsEl = document.getElementById("cart-items");
+  const cartTotalEl = document.getElementById("cart-total");
+
+  checkoutForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Pull whatever your cart UI currently shows
+    const itemsText = (cartItemsEl?.innerText || "").trim();
+    const totalText = (cartTotalEl?.innerText || "").trim();
+
+    // Basic guard so you don't get empty orders
+    if (!itemsText || itemsText.length < 2) {
+      statusEl.textContent = "Your cart is empty. Add items before submitting.";
+      return;
+    }
+
+    itemsField.value = itemsText;
+    totalField.value = totalText;
+
+    statusEl.textContent = "Sending your order…";
+
+    try {
+      const formData = new FormData(checkoutForm);
+
+      const res = await fetch(checkoutForm.action, {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
+
+      if (res.ok) {
+        statusEl.textContent = "Order submitted! We’ll be in touch shortly.";
+        checkoutForm.reset();
+
+        // Optional: clear the hidden fields too
+        itemsField.value = "";
+        totalField.value = "";
+
+        // If your cart has a “clear cart” function, call it here.
+        // Example: window.clearCart?.();
+      } else {
+        statusEl.textContent = "Something went wrong. Please try again.";
+      }
+    } catch (err) {
+      statusEl.textContent = "Network error. Please try again.";
+    }
+  });
+})();
