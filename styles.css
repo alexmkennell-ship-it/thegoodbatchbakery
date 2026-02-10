@@ -20,6 +20,56 @@ body {
   line-height: 1.5;
 }
 
+.brand-banner {
+  min-height: 320px;
+  display: grid;
+  place-items: center;
+  padding: 2rem 1rem;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(233, 190, 172, 0.45), transparent 35%),
+    radial-gradient(circle at 88% 82%, rgba(233, 190, 172, 0.45), transparent 35%),
+    #f8efe8;
+}
+
+.banner-frame {
+  width: min(1100px, 100%);
+  min-height: 300px;
+  border-radius: 24px;
+  border: 2px solid #ead4c4;
+  background: #fffaf5;
+  box-shadow: 0 12px 28px rgba(99, 64, 46, 0.12);
+  text-align: center;
+  padding: 2.5rem 1rem;
+}
+
+.banner-mark {
+  font-size: 2.8rem;
+  margin: 0;
+}
+
+.banner-title {
+  margin: 0.6rem 0 0;
+  letter-spacing: 0.08em;
+  color: #6a4a37;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.2rem, 5vw, 4.4rem);
+}
+
+.banner-subtitle {
+  margin: 0.3rem 0 0;
+  letter-spacing: 0.45em;
+  color: #8c6852;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1rem, 2vw, 1.7rem);
+}
+
+.banner-tagline {
+  margin: 1.1rem 0 0;
+  font-size: clamp(1rem, 2.2vw, 1.6rem);
+  font-style: italic;
+  color: #7a5b49;
+}
+
 .container {
   width: min(1000px, 92vw);
   margin: 0 auto;
@@ -132,4 +182,19 @@ footer {
   border-top: 1px solid var(--border);
   padding: 1rem 0;
   text-align: center;
+}
+
+@media (max-width: 700px) {
+  .brand-banner {
+    min-height: 260px;
+  }
+
+  .banner-frame {
+    min-height: 220px;
+    padding: 1.8rem 1rem;
+  }
+
+  .banner-subtitle {
+    letter-spacing: 0.25em;
+  }
 }
