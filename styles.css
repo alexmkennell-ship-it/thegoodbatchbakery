@@ -1,3 +1,42 @@
+:root {
+  --bg: #fffaf5;
+  --card: #ffffff;
+  --text: #382b2b;
+  --muted: #7a6666;
+  --accent: #cc6f3a;
+  --accent-dark: #a9572c;
+  --border: #ecd7cb;
+}
+
+/* ---------- Reset & Base ---------- */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* ---------- Brand Banner ---------- */
+.brand-banner {
+  min-height: 320px;
+  display: grid;
+  place-items: center;
+  padding: 2rem 1rem;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(233, 190, 172, 0.45), transparent 35%),
+    radial-gradient(circle at 88% 82%, rgba(233, 190, 172, 0.45), transparent 35%),
+    #f8efe8;
+}
+
 .banner-frame {
   width: min(1100px, 100%);
   min-height: 300px;
@@ -5,17 +44,158 @@
   border: 2px solid #ead4c4;
   box-shadow: 0 12px 28px rgba(99, 64, 46, 0.12);
 
-  /* ✅ Use your image */
   background-image: url("./Bas.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
-  /* keep content centered if you still have text inside */
-  text-align: center;
-  padding: 2.5rem 1rem;
-
-  /* optional: if you add an overlay later */
   position: relative;
   overflow: hidden;
+}
+
+/* Optional soft overlay for contrast */
+.banner-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 250, 245, 0.15);
+}
+
+/* ---------- Layout ---------- */
+.container {
+  width: min(1000px, 92vw);
+  margin: 0 auto;
+}
+
+main {
+  padding: 2rem 0 4rem;
+}
+
+section {
+  margin-bottom: 2.5rem;
+}
+
+/* ---------- Hero (CTA section) ---------- */
+.hero {
+  background: linear-gradient(120deg, #f4d7c4, #f7e9df);
+  padding: 4rem 0;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ---------- Typography ---------- */
+h1, h2, h3 {
+  margin-top: 0;
+  font-weight: 700;
+}
+
+.muted,
+small {
+  color: var(--muted);
+}
+
+/* ---------- Grid & Cards ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+.item-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+
+.price {
+  font-weight: 700;
+  color: var(--accent-dark);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.65rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.btn:hover {
+  background: var(--accent-dark);
+}
+
+/* ---------- Forms ---------- */
+.form {
+  display: grid;
+  gap: 0.8rem;
+}
+
+label {
+  display: grid;
+  gap: 0.3rem;
+  font-weight: 500;
+}
+
+input,
+textarea,
+select {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem;
+  font: inherit;
+  background: #fff;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.status {
+  min-height: 1.2rem;
+  color: var(--accent-dark);
+  font-weight: 600;
+}
+
+.total {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 1rem 0;
+  text-align: center;
+}
+
+/* ---------- Utilities ---------- */
+.stack {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 700px) {
+  .brand-banner {
+    min-height: 260px;
+  }
+
+  .banner-frame {
+    min-height: 220px;
+  }
 }
