@@ -29,6 +29,7 @@ try {
 
   state.cart = {};
   save();
+  localStorage.setItem("bakery-last-order", new Date().toISOString());
   checkoutForm.reset();
   renderCart();
   orderStatus.textContent = 'Order submitted! We will contact you shortly to confirm.';
