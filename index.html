@@ -7,20 +7,17 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <link rel="apple-touch-icon" href="favicon.svg" />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-  <section class="brand-banner" aria-label="The Good Batch Bakery banner">
-    <div class="banner-frame"></div>
-  </section>
-</body>
-
+    <section class="brand-banner" aria-label="The Good Batch Bakery banner">
+      <div class="banner-frame"></div>
     </section>
-
-    
 
     <main class="container">
       <section id="menu">
@@ -36,46 +33,51 @@
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
 
-   <form
-  id="checkout-form"
-  class="card form"
-  action="https://formspree.io/f/xlgwdkbv"
-  method="POST"
->
-  <h3>Checkout</h3>
+        <form
+          id="checkout-form"
+          class="card form"
+          action="https://formspree.io/f/xlgwdkbv"
+          method="POST"
+        >
+          <h3>Checkout</h3>
 
-  <!-- Optional, but strongly recommended -->
-  <input type="hidden" name="_subject" value="New Order — The Good Batch Bakery" />
+          <!-- Optional, but strongly recommended -->
+          <input type="hidden" name="_subject" value="New Order — The Good Batch Bakery" />
 
-  <label>
-    Name
-    <input type="text" name="name" required />
-  </label>
+          <label>
+            Name
+            <input type="text" name="name" required />
+          </label>
 
-  <label>
-    Your Email
-    <input type="email" name="email" required />
-  </label>
+          <label>
+            Your Email
+            <input type="email" name="email" required />
+          </label>
 
-  <label>
-    Phone
-    <input type="tel" name="phone" required />
-  </label>
+          <label>
+            Phone
+            <input type="tel" name="phone" required />
+          </label>
 
-  <label>
-    Pickup / Delivery Notes
-    <textarea name="notes" rows="3" placeholder="e.g., Pickup at 4pm"></textarea>
-  </label>
+          <label>
+            Pickup / Delivery Notes
+            <textarea name="notes" rows="3" placeholder="e.g., Pickup at 4pm"></textarea>
+          </label>
 
-  <!-- We'll fill these with JS right before submitting -->
-  <input type="hidden" name="order_items" id="order-items-field" />
-  <input type="hidden" name="order_total" id="order-total-field" />
-     <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+          <!-- We'll fill these with JS right before submitting -->
+          <input type="hidden" name="order_items" id="order-items-field" />
+          <input type="hidden" name="order_total" id="order-total-field" />
+          <input
+            type="text"
+            name="_gotcha"
+            style="display:none"
+            tabindex="-1"
+            autocomplete="off"
+          />
 
-  <button type="submit" class="btn">Submit Order</button>
-  <p id="order-status" class="status" aria-live="polite"></p>
-</form>
-
+          <button type="submit" class="btn">Submit Order</button>
+          <p id="order-status" class="status" aria-live="polite"></p>
+        </form>
 
       </section>
 
