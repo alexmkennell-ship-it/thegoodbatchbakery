@@ -1,10 +1,9 @@
-const menu = [
-  { id: 'sourdough', name: 'Sourdough Loaf', description: 'Naturally fermented artisan bread.', price: 7 },
-  { id: 'croissant', name: 'Butter Croissant', description: 'Flaky laminated pastry.', price: 4 },
-  { id: 'choc-cake', name: 'Chocolate Celebration Cake', description: 'Rich dark chocolate sponge with ganache.', price: 38 },
-  { id: 'cinnamon-roll', name: 'Cinnamon Roll Box', description: 'Box of 6 frosted cinnamon rolls.', price: 18 },
-  { id: 'brownie', name: 'Fudge Brownie', description: 'Dense brownie with cocoa nibs.', price: 5 }
-];
+let menu = [];
+
+async function loadMenu() {
+  const res = await fetch('./menu.json', { cache: 'no-store' });
+  menu = await res.json();
+}
 
 const state = {
   cart: JSON.parse(localStorage.getItem('bakery-cart') || '{}'),
@@ -50,6 +49,7 @@ function renderMenu() {
     const el = document.createElement('article');
     el.className = 'card';
     el.innerHTML = `
+      <img class="menu-img" src="${item.image}" alt="${item.name}" loading="lazy" />
       <div class="item-title">
         <h3>${item.name}</h3>
         <span class="price">${money(item.price)}</span>
@@ -224,9 +224,12 @@ const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 // Initial renders
-renderMenu();
-renderCart();
-renderReviews();
+(async function init() {
+  await loadMenu();
+  renderMenu();
+  renderCart();
+  renderReviews();
+})();
 
 // ✅ Show "order placed" message once when user returns
 (function showOrderConfirmationOnReturn() {
