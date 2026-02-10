@@ -27,36 +27,23 @@ body {
 
 /* ---------- Brand Banner ---------- */
 .brand-banner {
-  min-height: 320px;
-  display: grid;
-  place-items: center;
   padding: 2rem 1rem;
-  background:
-    radial-gradient(circle at 12% 18%, rgba(233, 190, 172, 0.45), transparent 35%),
-    radial-gradient(circle at 88% 82%, rgba(233, 190, 172, 0.45), transparent 35%),
-    #f8efe8;
+  background: #fffaf5;
+  display: flex;
+  justify-content: center;
 }
 
 .banner-frame {
   width: min(1100px, 100%);
-  border-radius: 24px;
-  border: 2px solid #ead4c4;
-  box-shadow: 0 12px 28px rgba(99, 64, 46, 0.12);
-
-  background-image: url("./Bas.png");
-  aspect-ratio: 3 / 2;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  position: relative;
-  overflow: hidden;
 }
 
 .banner-frame img {
   width: 100%;
   height: auto;
   display: block;
+  border-radius: 24px;
+  border: 2px solid #ead4c4;
+  box-shadow: 0 12px 28px rgba(99, 64, 46, 0.12);
 }
 
 /* ---------- Layout ---------- */
@@ -246,17 +233,6 @@ footer {
 
   section {
     margin-bottom: 1.75rem;
-  }
-
-  .brand-banner {
-    min-height: 260px;
-    padding: 1.1rem 0.75rem;
-  }
-
-  .banner-frame {
-    border: none;
-    border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(99, 64, 46, 0.1);
   }
 
   .order-heading {
