@@ -1,0 +1,37 @@
+[
+  {
+    "id": "sourdough",
+    "name": "Sourdough Loaf",
+    "description": "Naturally fermented artisan bread.",
+    "price": 7,
+    "image": "images/sourdough.jpg"
+  },
+  {
+    "id": "croissant",
+    "name": "Butter Croissant",
+    "description": "Flaky laminated pastry.",
+    "price": 4,
+    "image": "images/croissant.jpg"
+  },
+  {
+    "id": "choc-cake",
+    "name": "Chocolate Celebration Cake",
+    "description": "Rich dark chocolate sponge with ganache.",
+    "price": 38,
+    "image": "images/choc-cake.jpg"
+  },
+  {
+    "id": "cinnamon-roll",
+    "name": "Cinnamon Roll Box",
+    "description": "Box of 6 frosted cinnamon rolls.",
+    "price": 18,
+    "image": "images/cinnamon-roll.jpg"
+  },
+  {
+    "id": "brownie",
+    "name": "Fudge Brownie",
+    "description": "Dense brownie with cocoa nibs.",
+    "price": 5,
+    "image": "images/brownie.jpg"
+  }
+]

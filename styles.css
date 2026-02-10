@@ -120,6 +120,15 @@ small {
   color: var(--accent-dark);
 }
 
+.menu-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--border);
+}
+
 /* ---------- Buttons ---------- */
 .btn {
   display: inline-block;
