@@ -38,32 +38,20 @@ body {
 }
 
 .banner-frame {
-  width: min(1100px, 100%);
-  min-height: 300px;
-  border-radius: 24px;
-  border: 2px solid #ead4c4;
-  box-shadow: 0 12px 28px rgba(99, 64, 46, 0.12);
-
-  background-image: url("./Bas.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  position: relative;
-  overflow: hidden;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-/* Optional soft overlay for contrast */
-.banner-frame::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 250, 245, 0.15);
+.banner-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* ---------- Layout ---------- */
 .container {
-  width: min(1000px, 92vw);
+  width: min(1100px, 92vw);
   margin: 0 auto;
 }
 
@@ -106,6 +94,7 @@ small {
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 1rem;
+  box-shadow: 0 6px 18px rgba(99, 64, 46, 0.06);
 }
 
 .item-title {
@@ -140,11 +129,46 @@ small {
   cursor: pointer;
   font-weight: 600;
   text-decoration: none;
-  transition: background 0.15s ease;
+  transition: background 0.15s ease, transform 0.15s ease, opacity 0.15s ease;
 }
 
 .btn:hover {
   background: var(--accent-dark);
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--accent-dark);
+  border: 1px solid var(--accent-dark);
+}
+
+.btn-secondary:hover {
+  background: rgba(169, 87, 44, 0.08);
+}
+
+.btn-remove {
+  margin-left: 0.5rem;
+  padding: 0.3rem 0.6rem;
+  line-height: 1;
+}
+
+.order-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
 /* ---------- Forms ---------- */
@@ -199,12 +223,36 @@ footer {
 }
 
 /* ---------- Mobile ---------- */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  }
+}
+
 @media (max-width: 700px) {
-  .brand-banner {
-    min-height: 260px;
+  main {
+    padding: 1.25rem 0 2.5rem;
   }
 
-  .banner-frame {
-    min-height: 220px;
+  section {
+    margin-bottom: 1.75rem;
+  }
+
+  .brand-banner {
+    min-height: 260px;
+    padding: 1.1rem 0.75rem;
+  }
+
+  .order-heading {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .order-heading .btn {
+    width: 100%;
+  }
+
+  .item-title {
+    align-items: center;
   }
 }

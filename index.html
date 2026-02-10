@@ -16,7 +16,9 @@
   </head>
   <body>
     <section class="brand-banner" aria-label="The Good Batch Bakery banner">
-      <div class="banner-frame"></div>
+      <div class="banner-frame">
+        <img src="./Bas.png" alt="The Good Batch Bakery banner" />
+      </div>
     </section>
 
     <main class="container">
@@ -26,7 +28,10 @@
       </section>
 
       <section id="order">
-        <h2>Your Order</h2>
+        <div class="order-heading">
+          <h2>Your Order</h2>
+          <button id="clear-cart-btn" type="button" class="btn btn-secondary">Clear cart</button>
+        </div>
         <div id="cart-items" class="card"></div>
         <p id="cart-total" class="total">Total: $0.00</p>
 
@@ -80,6 +85,7 @@
         </form>
 
       </section>
+    </main>
 
     
 
