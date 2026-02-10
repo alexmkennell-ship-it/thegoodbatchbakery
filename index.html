@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Good Batch Bakery</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <section class="brand-banner" aria-label="The Good Batch Bakery banner">
+      <div class="banner-frame">
+        <p class="banner-mark">🍪</p>
+        <h1 class="banner-title">THE GOOD BATCH</h1>
+        <p class="banner-subtitle">BAKERY</p>
+        <p class="banner-tagline">Homemade · Handmade · Cookies & More</p>
+      </div>
+    </section>
+
+    <header class="hero">
+      <div class="container">
+        <h2>The Good Batch Bakery</h2>
+        <p>Fresh bakes, custom cakes, and quick online ordering.</p>
+        <a href="#order" class="btn">Place an Order</a>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="menu">
+        <h2>Today's Menu</h2>
+        <div id="menu-grid" class="grid"></div>
+      </section>
+
+      <section id="order">
+        <h2>Your Order</h2>
+        <div id="cart-items" class="card"></div>
+        <p id="cart-total" class="total">Total: $0.00</p>
+
+        <form id="checkout-form" class="card form">
+          <h3>Checkout</h3>
+          <label>
+            Name
+            <input type="text" name="name" required />
+          </label>
+          <label>
+            Phone
+            <input type="tel" name="phone" required />
+          </label>
+          <label>
+            Pickup / Delivery Notes
+            <textarea name="notes" rows="3" placeholder="e.g., Pickup at 4pm"></textarea>
+          </label>
+          <button type="submit" class="btn">Submit Order</button>
+          <p id="order-status" class="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section id="reviews">
+        <h2>Customer Reviews</h2>
+        <form id="review-form" class="card form">
+          <label>
+            Your Name
+            <input type="text" name="reviewer" required />
+          </label>
+          <label>
+            Rating
+            <select name="rating" required>
+              <option value="5">5 - Amazing</option>
+              <option value="4">4 - Great</option>
+              <option value="3">3 - Good</option>
+              <option value="2">2 - Okay</option>
+              <option value="1">1 - Needs improvement</option>
+            </select>
+          </label>
+          <label>
+            Review
+            <textarea name="message" rows="3" required></textarea>
+          </label>
+          <button type="submit" class="btn">Post Review</button>
+        </form>
+
+        <div id="review-list" class="stack"></div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>© <span id="year"></span> The Good Batch Bakery</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
