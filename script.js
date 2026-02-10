@@ -49,7 +49,7 @@ try {
     checkoutForm.reset();
     renderCart();
     orderStatus.textContent = 'Order submitted! We will contact you shortly to confirm.';
-  } catch (error) {
+  } catch(error) {
     console.error(error);
     orderStatus.textContent = 'Sorry, we could not submit your order. Please try again.';
   }
