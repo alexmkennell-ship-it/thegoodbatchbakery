@@ -101,6 +101,25 @@ function renderCart() {
   cartTotal.textContent = `Total: ${money(total)}`;
 }
 
+
+function getOrderSummary() {
+  const entries = Object.entries(state.cart);
+  return entries
+    .map(([id, quantity]) => {
+      const item = menu.find((m) => m.id === id);
+      return item ? `${item.name} x${quantity}` : null;
+    })
+    .filter(Boolean)
+    .join(', ');
+}
+
+function getCartTotal() {
+  return Object.entries(state.cart).reduce((sum, [id, quantity]) => {
+    const item = menu.find((m) => m.id === id);
+    return item ? sum + item.price * quantity : sum;
+  }, 0);
+}
+
 function renderReviews() {
   reviewList.innerHTML = '';
   if (!state.reviews.length) {
@@ -123,7 +142,7 @@ function renderReviews() {
   }
 }
 
-checkoutForm.addEventListener('submit', (event) => {
+checkoutForm.addEventListener('submit', async (event) => {
   event.preventDefault();
 
   if (!Object.keys(state.cart).length) {
@@ -131,24 +150,33 @@ checkoutForm.addEventListener('submit', (event) => {
     return;
   }
 
+  orderStatus.textContent = 'Submitting your order...';
+
   const formData = new FormData(checkoutForm);
-  const order = {
-    customer: formData.get('name'),
-    phone: formData.get('phone'),
-    notes: formData.get('notes'),
-    items: { ...state.cart },
-    createdAt: new Date().toISOString()
-  };
+  formData.set('order_items', getOrderSummary());
+  formData.set('order_total', money(getCartTotal()));
 
-  const orders = JSON.parse(localStorage.getItem('bakery-orders') || '[]');
-  orders.push(order);
-  localStorage.setItem('bakery-orders', JSON.stringify(orders));
+  try {
+    const response = await fetch(checkoutForm.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        Accept: 'application/json'
+      }
+    });
 
-  state.cart = {};
-  save();
-  checkoutForm.reset();
-  renderCart();
-  orderStatus.textContent = 'Order submitted! We will contact you shortly to confirm.';
+    if (!response.ok) {
+      throw new Error('Order submission failed');
+    }
+
+    state.cart = {};
+    save();
+    checkoutForm.reset();
+    renderCart();
+    orderStatus.textContent = 'Order submitted! We will contact you shortly to confirm.';
+  } catch (error) {
+    orderStatus.textContent = 'Sorry, we could not submit your order. Please try again.';
+  }
 });
 
 reviewForm.addEventListener('submit', (event) => {
