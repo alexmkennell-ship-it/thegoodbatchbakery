@@ -44,29 +44,44 @@
         <p id="cart-total" class="total">Total: $0.00</p>
 
         <form
-          id="checkout-form"
-          class="card form"
-          action="https://formspree.io/f/xlgwdkbv"
-          method="POST"
-        >
-          <h3>Checkout</h3>
-          <label>
-            Name
-            <input type="text" name="name" required />
-          </label>
-          <label>
-            Phone
-            <input type="tel" name="phone" required />
-          </label>
-          <label>
-            Pickup / Delivery Notes
-            <textarea name="notes" rows="3" placeholder="e.g., Pickup at 4pm"></textarea>
-          </label>
-          <input type="hidden" name="order_items" id="order-items-field" />
-          <input type="hidden" name="order_total" id="order-total-field" />
-          <button type="submit" class="btn">Submit Order</button>
-          <p id="order-status" class="status" aria-live="polite"></p>
-        </form>
+  id="checkout-form"
+  class="card form"
+  action="https://formspree.io/f/xlgwdkbv"
+  method="POST"
+>
+  <h3>Checkout</h3>
+
+  <!-- Optional, but strongly recommended -->
+  <input type="hidden" name="_subject" value="New Order — The Good Batch Bakery" />
+
+  <label>
+    Name
+    <input type="text" name="name" required />
+  </label>
+
+  <label>
+    Your Email
+    <input type="email" name="email" required />
+  </label>
+
+  <label>
+    Phone
+    <input type="tel" name="phone" required />
+  </label>
+
+  <label>
+    Pickup / Delivery Notes
+    <textarea name="notes" rows="3" placeholder="e.g., Pickup at 4pm"></textarea>
+  </label>
+
+  <!-- We'll fill these with JS right before submitting -->
+  <input type="hidden" name="order_items" id="order-items-field" />
+  <input type="hidden" name="order_total" id="order-total-field" />
+
+  <button type="submit" class="btn">Submit Order</button>
+  <p id="order-status" class="status" aria-live="polite"></p>
+</form>
+
       </section>
 
       <section id="reviews">
