@@ -13,6 +13,7 @@ const state = {
 const menuGrid = document.getElementById('menu-grid');
 const cartItems = document.getElementById('cart-items');
 const cartTotal = document.getElementById('cart-total');
+const clearCartBtn = document.getElementById('clear-cart-btn');
 const checkoutForm = document.getElementById('checkout-form');
 const orderStatus = document.getElementById('order-status');
 const reviewForm = document.getElementById('review-form');
@@ -31,6 +32,7 @@ function addToCart(itemId) {
   state.cart[itemId] = (state.cart[itemId] || 0) + 1;
   save();
   renderCart();
+  if (orderStatus) orderStatus.textContent = '';
 }
 
 function removeFromCart(itemId) {
@@ -39,6 +41,17 @@ function removeFromCart(itemId) {
   if (state.cart[itemId] <= 0) delete state.cart[itemId];
   save();
   renderCart();
+  if (orderStatus) orderStatus.textContent = '';
+}
+
+function clearCart() {
+  state.cart = {};
+  save();
+  renderCart();
+
+  if (orderStatus) {
+    orderStatus.textContent = 'Cart cleared.';
+  }
 }
 
 function renderMenu() {
@@ -70,6 +83,7 @@ function renderCart() {
   if (!entries.length) {
     cartItems.innerHTML = '<p class="muted">Your cart is empty. Add items from the menu above.</p>';
     cartTotal.textContent = 'Total: $0.00';
+    if (clearCartBtn) clearCartBtn.disabled = true;
     return;
   }
 
@@ -91,7 +105,7 @@ function renderCart() {
       </div>
       <div>
         <span class="price">${money(item.price * quantity)}</span>
-        <button class="btn" data-remove="${item.id}" style="margin-left:8px; padding:0.3rem 0.6rem;">−</button>
+        <button class="btn btn-remove" data-remove="${item.id}" aria-label="Remove one ${item.name}">−</button>
       </div>
     `;
 
@@ -102,7 +116,9 @@ function renderCart() {
   cartItems.innerHTML = '';
   cartItems.appendChild(fragment);
   cartTotal.textContent = `Total: ${money(total)}`;
+  if (clearCartBtn) clearCartBtn.disabled = false;
 }
+
 
 function getOrderSummary() {
   const entries = Object.entries(state.cart);
@@ -144,6 +160,13 @@ function renderReviews() {
     `;
     reviewList.appendChild(el);
   }
+}
+
+if (clearCartBtn) {
+  clearCartBtn.addEventListener('click', () => {
+    if (!Object.keys(state.cart).length) return;
+    clearCart();
+  });
 }
 
 // ✅ Checkout submit -> Formspree
